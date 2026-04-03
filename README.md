@@ -13,3 +13,10 @@ npx playwright test
 ```bash
 npx playwright test -g "product"
 ```
+**5. Run tag @smoke example**
+```bash
+-- edit scenarios with @tag
+npx bddgen
+npx playwright test -g "login.*@smoke"
+npx playwright test -g "@smoke"  
+```
