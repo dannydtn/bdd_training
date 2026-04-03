@@ -1,4 +1,5 @@
 Feature: Go to tab Product on Milwaukee
+
   Scenario: Display correctly Product screen
     Given I open the Milwaukee website
     When I go to the search screen
