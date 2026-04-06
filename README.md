@@ -11,6 +11,7 @@ npx playwright test
 ```
 **4. Run a specific test case**
 ```bash
+npx playwright test product
 npx playwright test -g "product"
 ```
 **5. Run tag @smoke example**

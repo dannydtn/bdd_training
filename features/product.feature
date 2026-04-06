@@ -1,7 +1,14 @@
 Feature: Go to tab Product on Milwaukee
-@regression
-  Scenario: Display correctly Product screen
+
+  Background:
     Given I open the Milwaukee website
+
+  Scenario: Display correctly Product screen
     When I go to the search screen
     Then I should see the searching bar
-    And Url should has search
+    And Url should contain search path
+
+  Scenario: Display product details
+    When I go to tab pipeline screen
+    And I click on the first product
+    Then Url should contain details path
