@@ -1,14 +1,14 @@
 import { defineConfig, devices } from '@playwright/test';
 import { defineBddConfig } from 'playwright-bdd';
 
-const testDir = defineBddConfig({
+const bddConfig = defineBddConfig({
   features: 'features/*.feature',
   steps: 'steps/*.ts',
   outputDir: '.tests-bdd',
 });
 
 export default defineConfig({
-  testDir,
+  ...bddConfig,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -20,8 +20,19 @@ export default defineConfig({
   },
   projects: [
     {
+      name: 'setup',
+      testDir: './tests',
+      testMatch: /auth\.setup\.ts/,
+    },
+    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      testDir: '.tests-bdd',
+      use: {
+        ...devices['Desktop Chrome'],
+        slowMo: 3000,
+        storageState: 'playwright/.auth/user.json',
+      },
+      dependencies: ['setup'],
     },
   ],
 });

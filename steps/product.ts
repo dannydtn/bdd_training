@@ -7,7 +7,7 @@ Given('I open the Milwaukee website', async ({ page }) => {
   await page.goto('https://www.milwaukeetool.com/');
 });
 
-When('I go to the search screen', async ({ page }, url: string) => {
+When('I go to the search screen', async ({ page }) => {
   await page.locator('a[href="/search"]').click();
 });
 
@@ -18,3 +18,4 @@ Then('I should see the searching bar', async ({ page }) => {
 Then('Url should has search', async ({ page }) => {
   await expect(page).toHaveURL(/.*\/search/);
 });
+
