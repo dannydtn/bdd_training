@@ -16,6 +16,13 @@ const bddConfigNoAuth = defineBddConfig({
 });
 
 export default defineConfig({
+  expect: {
+    toHaveScreenshot: {
+      maxDiffPixels: 500,
+      threshold: 0.9,
+      animations: 'disabled',
+    },
+  },
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
@@ -24,6 +31,7 @@ export default defineConfig({
   use: {
     screenshot: 'on',
     trace: 'on-first-retry',
+    viewport: { width: 1280, height: 720},
   },
   projects: [
     // --- Setup auth ---

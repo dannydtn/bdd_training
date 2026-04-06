@@ -12,3 +12,7 @@ Feature: Go to tab Product on Milwaukee
     When I go to tab pipeline screen
     And I click on the first product
     Then Url should contain details path
+
+  Scenario: Display match with design
+    When I go to M12 innovations
+    Then Display match with image design

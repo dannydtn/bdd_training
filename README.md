@@ -21,3 +21,20 @@ npx bddgen
 npx playwright test -g "login.*@smoke"
 npx playwright test -g "@smoke"  
 ```
+--- 
+## 🏗️ Project Structure
+```
+playwright-bdd/
+├── pages/                  ← chứa Page Objects
+│   ├── LoginPage.ts        ← login, expect dashboard
+│   ├── InventoryPage.ts    ← goto inventory, click product, expect URL
+│   └── MilwaukeePage.ts    ← goto, search, pipeline, dismiss popup
+├── steps/                  
+│   ├── login.ts
+│   ├── details.ts
+│   └── product.ts
+├── features/               
+├── tests/                  
+└── playwright.config.ts    
+```
+--- 

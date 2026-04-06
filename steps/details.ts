@@ -1,16 +1,19 @@
 import { createBdd } from 'playwright-bdd';
-import { expect } from '@playwright/test';
+import { InventoryPage } from '../pages/InventoryPage';
 
 const { Given, When, Then } = createBdd();
 
 Given('I go to inventory page', async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/inventory.html');
+  const inventoryPage = new InventoryPage(page);
+  await inventoryPage.goto();
 });
 
 When('I click on product', async ({ page }) => {
-  await page.locator('.inventory_item_name').first().click();
+  const inventoryPage = new InventoryPage(page);
+  await inventoryPage.clickFirstProduct();
 });
 
 Then('url should has inventory-item', async ({ page }) => {
-  await expect(page).toHaveURL(/.*\/inventory-item/);
+  const inventoryPage = new InventoryPage(page);
+  await inventoryPage.expectProductDetailUrl();
 });

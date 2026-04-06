@@ -1,34 +1,56 @@
-import { createBdd } from "playwright-bdd";
-import { expect } from "@playwright/test";
+import { createBdd } from 'playwright-bdd';
+import { MilwaukeePage } from '../pages/MilwaukeePage';
+import {test, expect} from '@playwright/test';
 
 const { Given, When, Then } = createBdd();
 
-Given("I open the Milwaukee website", async ({ page }) => {
-  await page.goto("https://www.milwaukeetool.com/");
+Given('I open the Milwaukee website', async ({ page }) => {
+  const milwaukeePage = new MilwaukeePage(page);
+  await milwaukeePage.goto();
 });
 
-When("I go to the search screen", async ({ page }) => {
-  await page.locator('a[href="/search"]').click();
+When('I go to the search screen', async ({ page }) => {
+  const milwaukeePage = new MilwaukeePage(page);
+  await milwaukeePage.goToSearch();
 });
 
-Then("I should see the searching bar", async ({ page }) => {
-  await expect(page.locator('input[name="search"]').first()).toBeVisible();
+Then('I should see the searching bar', async ({ page }) => {
+  const milwaukeePage = new MilwaukeePage(page);
+  await milwaukeePage.expectSearchBarVisible();
 });
 
-Then("Url should contain search path", async ({ page }) => {
-  await expect(page).toHaveURL(/.*\/search/);
+Then('Url should contain search path', async ({ page }) => {
+  const milwaukeePage = new MilwaukeePage(page);
+  await milwaukeePage.expectSearchUrl();
 });
 
-When("I go to tab pipeline screen", async ({ page }) => {
-  await page.getByRole("link", { name: "New Pipeline" }).click();
+When('I go to tab pipeline screen', async ({ page }) => {
+  const milwaukeePage = new MilwaukeePage(page);
+  await milwaukeePage.goToPipeline();
 });
 
-When("I click on the first product", async ({ page }) => {
+When('I click on the first product', async ({ page }) => {
+  const milwaukeePage = new MilwaukeePage(page);
   await page.getByTestId("lead-gen-popup-close").click();
-  await page.getByText("Four Bay Simultaneous Super Charger").click();
+  await milwaukeePage.clickFirstProduct();
 });
 
-Then("Url should contain details path", async ({ page }) => {
-  // await page.getByRole('button', { name: 'Product Details' }).click();
-  await page.waitForURL(/\/products\/details\//i, { timeout: 30000 });
+Then('Url should contain details path', async ({ page }) => {
+  const milwaukeePage = new MilwaukeePage(page);
+  await milwaukeePage.expectProductDetailsUrl();
+});
+
+When('I go to M12 innovations', async ({ page }) => {
+  const milwaukeePage = new MilwaukeePage(page);
+  await milwaukeePage.innovations();
+  await page.waitForTimeout(3000);
+});
+
+Then('Display match with image design', async ({ page }) => {  
+  await page.waitForTimeout(3000);
+  await page.addStyleTag({
+     content: `
+    body {overflow: hidden !important;}`
+  })
+  await expect(page).toHaveScreenshot('./img/Screenshot_1.png');
 });
