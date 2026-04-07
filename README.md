@@ -21,6 +21,12 @@ npx bddgen
 npx playwright test -g "login.*@smoke"
 npx playwright test -g "@smoke"  
 ```
+**6. Create Dashboard report with allure**
+```bash
+npx allure serve allure-results
+-- if u want to del all old result before save new result
+allure generate allure-results --clean
+```
 --- 
 ## 🏗️ Project Structure
 ```

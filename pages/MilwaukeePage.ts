@@ -44,6 +44,6 @@ export class MilwaukeePage {
   }
 
   async innovations(){
-    await this.page.getByText("Portable Productivity.").first().click();
+    await this.page.getByText("PERFORMANCE DRIVEN.").first().click();
   }
 }
