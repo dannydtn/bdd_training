@@ -14,5 +14,5 @@ Feature: Go to tab Product on Milwaukee
     Then Url should contain details path
 
   Scenario: Display match with design
-    When I go to M12 innovations
+    When I go to M18 innovations
     Then Display match with image design

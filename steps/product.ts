@@ -40,7 +40,7 @@ Then('Url should contain details path', async ({ page }) => {
   await milwaukeePage.expectProductDetailsUrl();
 });
 
-When('I go to M12 innovations', async ({ page }) => {
+When('I go to M18 innovations', async ({ page }) => {
   const milwaukeePage = new MilwaukeePage(page);
   await milwaukeePage.innovations();
   await page.waitForTimeout(3000);
