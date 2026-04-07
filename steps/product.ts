@@ -52,5 +52,5 @@ Then('Display match with image design', async ({ page }) => {
      content: `
     body {overflow: hidden !important;}`
   })
-  await expect(page).toHaveScreenshot('./img/Screenshot_1.png');
+  await expect(page).toHaveScreenshot('./img/img1.png');
 });
