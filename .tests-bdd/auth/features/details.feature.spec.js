@@ -3,7 +3,7 @@ import { test } from "playwright-bdd";
 
 test.describe('Details product on SauceDemo', () => {
 
-  test('Click to Product details', { tag: ['@smoke'] }, async ({ Given, When, Then, page }) => { 
+  test('Click to Product details', { tag: ['@regression'] }, async ({ Given, When, Then, page }) => { 
     await Given('I go to inventory page', null, { page }); 
     await When('I click on product', null, { page }); 
     await Then('url should has inventory-item', null, { page }); 
@@ -20,5 +20,5 @@ test.use({
 });
 
 const bddFileData = [ // bdd-data-start
-  {"pwTestLine":6,"pickleLine":3,"tags":["@smoke"],"steps":[{"pwStepLine":7,"gherkinStepLine":4,"keywordType":"Context","textWithKeyword":"Given I go to inventory page","stepMatchArguments":[]},{"pwStepLine":8,"gherkinStepLine":5,"keywordType":"Action","textWithKeyword":"When I click on product","stepMatchArguments":[]},{"pwStepLine":9,"gherkinStepLine":6,"keywordType":"Outcome","textWithKeyword":"Then url should has inventory-item","stepMatchArguments":[]}]},
+  {"pwTestLine":6,"pickleLine":3,"tags":["@regression"],"steps":[{"pwStepLine":7,"gherkinStepLine":4,"keywordType":"Context","textWithKeyword":"Given I go to inventory page","stepMatchArguments":[]},{"pwStepLine":8,"gherkinStepLine":5,"keywordType":"Action","textWithKeyword":"When I click on product","stepMatchArguments":[]},{"pwStepLine":9,"gherkinStepLine":6,"keywordType":"Outcome","textWithKeyword":"Then url should has inventory-item","stepMatchArguments":[]}]},
 ]; // bdd-data-end

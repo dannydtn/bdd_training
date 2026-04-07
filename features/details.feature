@@ -1,5 +1,5 @@
 Feature: Details product on SauceDemo
-@smoke
+@regression
   Scenario: Click to Product details
     Given I go to inventory page
     When I click on product 

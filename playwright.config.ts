@@ -27,9 +27,10 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: [['html', { open: 'on-failure' }], ['line'], ['allure-playwright', {outputFolder: 'allure-results'}]],
   use: {
     screenshot: 'on',
+    video: 'retain-on-failure',
     trace: 'on-first-retry',
     viewport: { width: 1280, height: 720},
   },
